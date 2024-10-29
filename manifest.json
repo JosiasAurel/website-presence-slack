@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "website-presence-slack",
+    "description": "Update slack with your website presence",
+    "version": "1.0",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": [ "tabs", "storage" ],
+    "host_permissions": [ "https://slack.com/*" ],
+    "content_scripts": [
+        {
+            "matches": [ "https://d047-129-0-205-255.ngrok-free.app/*" ],
+            "js": [ "content.js" ]
+        }
+    ],
+    "externally_connectable": {
+      "matches": ["https://d047-129-0-205-255.ngrok-free.app/*"]
+    },
+    "background": {
+        "service_worker": "update-slack-status.js",
+        "type": "module"
+    }
+}
